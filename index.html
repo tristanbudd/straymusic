@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stray Music</title>
+
+    <meta name="description" content="Stray Music is a music streaming service that allows you to listen to your favorite music on the go.">
+    <meta name="keywords" content="music, streaming, audio, songs, artists, albums">
+    <meta name="author" content="Stray Music">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#333333">
+    <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#333333">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon/favicon-194x194.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#333333">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+
+    <script src="https://kit.fontawesome.com/7a8bccb54b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-overlay" id="background_overlay">
+        <div class="logo-overlay" id="logo_overlay"></div>
+            <div class="rain-effect" id="rain_effect">
+                <div class="drop-down-settings">
+                    <div class="drop-down-settings-menu">
+                        <ul>
+                            <li><i class="fa-solid fa-image"></i><a onclick="switch_background()">Switch Background</a></li>
+                            <li><i class="fa-regular fa-image"></i><a id="background_blur" onclick="toggle_background_blur()">Toggle Background Blur (Off)</a></li>
+                            <li><i class="fa-solid fa-music"></i><a id="toggle_music" onclick="toggle_sound_music()">Toggle Music (Off)</a></li>
+                            <li><i class="fa-solid fa-headphones"></i><a onclick="switch_music()">Switch Music</a></li>
+                            <li><i class="fa-solid fa-volume-high"></i><a>Volume (<input type="range" id="volume-slider">)</a></li>
+                            <li><i class="fa-solid fa-toggle-on"></i><a id="toggle_logo" onclick="toggle_logo_overlay()">Toggle Logo (Off)</a></li>
+                            <li><i class="fa-solid fa-cloud-rain"></i><a id="toggle_rain" onclick="toggle_sound_rain()">Toggle Rain (Off)</a></li>
+                            <li><i class="fa-solid fa-cloud-bolt"></i><a id="toggle_thunder" onclick="toggle_sound_thunder()">Toggle Thunder (Off)</a></li>
+                            <li><i class="fa-solid fa-user"></i><a href="https://github.com/tristanbudd" target="_blank">Made by Tristan Budd</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
