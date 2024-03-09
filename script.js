@@ -13,63 +13,7 @@ const background_list = [
     "https://i.imgur.com/O1vqlCe.jpg",
 ]
 
-const music_list = [
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-01%2520-%2520Inside%2520the%2520Wall.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-02%2520-%2520Dead%2520City.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-03%2520-%2520Follow%2520the%2520Light.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-04%2520-%2520Intruder.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-05%2520-%2520Guardian.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-06%2520-%2520The%2520Notebooks.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-07%2520-%2520Slums.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-08%2520-%2520Rooftops.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-09%2520-%2520Town%2520Square.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-10%2520-%2520Communication.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-11%2520-%2520Secret%2520Lab.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-12%2520-%2520Dead%2520End.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-13%2520-%2520Raft.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-14%2520-%2520Fuse.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-15%2520-%2520Roberto%2520is%2520Out.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-16%2520-%2520Sewers.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-17%2520-%2520Hatching.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-18%2520-%2520Ant%2520Village.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-19%2520-%2520Midtown.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-20%2520-%2520Outlaws.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-21%2520-%2520Trash%2520Zone.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-22%2520-%2520Rikonium.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-23%2520-%2520Cells.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-24%2520-%2520Stealth.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-25%2520-%2520Courtyard.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-26%2520-%2520Last%2520Night.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-27%2520-%2520Clean%2520City.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-28%2520-%2520Control%2520Room.mp3",
-    "https://downloads.khinsider.com/game-soundtracks/album/stray-original-soundtrack-2022/1-29%2520-%2520Daybreak.mp3",
-]
-
 document.body.style.backgroundImage = `url(${background_list[Math.floor(Math.random() * background_list.length)]})`;
-
-let current_track_index = Math.floor(Math.random() * music_list.length);
-let audio = new Audio(music_list[current_track_index]);
-
-function play_music() {
-    audio.play();
-}
-
-function pause_music() {
-    audio.pause();
-    audio.currentTime = 0;
-}
-
-function switch_music() {
-    let new_track_index = Math.floor(Math.random() * music_list.length);
-    while(new_track_index === current_track_index) {
-        new_track_index = Math.floor(Math.random() * music_list.length);
-    }
-    current_track_index = new_track_index;
-    audio.src = music_list[current_track_index];
-    audio.play();
-}
-
-play_music();
 
 function switch_background() {
     let new_background = background_list[Math.floor(Math.random() * background_list.length)];
@@ -121,25 +65,70 @@ var rain_effect_background = function() {
 
 rain_effect_background();
 
+const volume_slider = document.getElementById('volume_slider');
+music_audio.volume = volume_slider.value;
+rain_audio.volume = volume_slider.value;
+thunder_audio.volume = volume_slider.value;
+var is_playing_music = true;
+var is_playing_rain = true;
+var is_playing_thunder = true;
+var currentTrackIndex = 0;
+
+music_audio.addEventListener('ended', function() {
+    currentTrackIndex = (currentTrackIndex + 1) % music_audio.children.length;
+
+    music_audio.src = music_audio.children[currentTrackIndex].src;
+    music_audio.play();
+});
+
+function switch_music() {
+    currentTrackIndex = (currentTrackIndex + 1) % music_audio.children.length;
+
+    music_audio.src = music_audio.children[currentTrackIndex].src;
+    music_audio.play();
+}
+
 function toggle_sound_music() {
     const toggle_music = document.getElementById('toggle_music');
+    const music_audio = document.getElementById('music_audio');
 
     if(toggle_music.innerText.toLowerCase() === "toggle music (off)") {
         toggle_music.innerText = "Toggle Music (On)";
-        pause_music();
     } else {
         toggle_music.innerText = "Toggle Music (Off)";
-        play_music();
+    }
+
+    if (is_playing_music) {
+        music_audio.pause();
+        is_playing_music = false;
+    } else {
+        music_audio.play();
+        is_playing_music = true;
     }
 }
 
+volume_slider.addEventListener('input', function() {
+    music_audio.volume = volume_slider.value;
+    rain_audio.volume = volume_slider.value;
+    thunder_audio.volume = volume_slider.value;
+});
+
 function toggle_sound_rain() {
+    const rain_audio = document.getElementById('rain_audio');
     const toggle_rain = document.getElementById('toggle_rain');
 
     if(toggle_rain.innerText.toLowerCase() === "toggle rain (off)") {
         toggle_rain.innerText = "Toggle Rain (On)";
     } else {
         toggle_rain.innerText = "Toggle Rain (Off)";
+    }
+
+    if (is_playing_rain) {
+        rain_audio.pause();
+        is_playing_rain = false;
+    } else {
+        rain_audio.play();
+        is_playing_rain = true;
     }
 
     let drop = document.getElementsByClassName('drop');
@@ -154,10 +143,36 @@ function toggle_sound_rain() {
 
 function toggle_sound_thunder() {
     const toggle_thunder = document.getElementById('toggle_thunder');
+    const thunder_audio = document.getElementById('thunder_audio');
 
     if(toggle_thunder.innerText.toLowerCase() === "toggle thunder (off)") {
         toggle_thunder.innerText = "Toggle Thunder (On)";
     } else {
         toggle_thunder.innerText = "Toggle Thunder (Off)";
     }
+
+    if (is_playing_thunder) {
+        thunder_audio.pause();
+        is_playing_thunder = false;
+    } else {
+        thunder_audio.play();
+        is_playing_thunder = true;
+    }
+}
+
+window.onload = function() {
+    const toggle_dropdown = document.getElementById('toggle_dropdown');
+    const drop_down_settings = document.getElementById('drop_down_settings');
+
+    toggle_dropdown.addEventListener('click', function () {
+        if (drop_down_settings.style.display === "none") {
+            drop_down_settings.style.display = "block";
+        } else {
+            drop_down_settings.style.display = "none";
+        }
+    });
+
+    music_audio.play();
+    rain_audio.play();
+    thunder_audio.play();
 }
