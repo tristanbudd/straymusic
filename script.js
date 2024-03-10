@@ -163,6 +163,9 @@ function toggle_sound_thunder() {
 window.onload = function() {
     const toggle_dropdown = document.getElementById('toggle_dropdown');
     const drop_down_settings = document.getElementById('drop_down_settings');
+    const music_audio = document.getElementById('music_audio');
+    const rain_audio = document.getElementById('rain_audio');
+    const thunder_audio = document.getElementById('thunder_audio');
 
     toggle_dropdown.addEventListener('click', function () {
         if (drop_down_settings.style.display === "none") {
