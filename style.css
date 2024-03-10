@@ -228,3 +228,28 @@ body.splat-toggle .splat {
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
+
+/* Audio Toggle */
+.toggle-audio-button {
+    position: fixed;
+    bottom: 0;
+    margin-left: 100px;
+    margin-bottom: 32px;
+    display: block;
+    text-align: right;
+    color: var(--white);
+    outline: var(--white) solid 2px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.toggle-audio-button i {
+    font-size: 1.5em;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: var(--black);
+    border-radius: 100%;
+    box-shadow:
+            inset 0 0 0 1px rgba(0, 0, 0, 0.32),
+            inset 0 0 0 2px rgba(255, 255, 255, 0.19);
+}

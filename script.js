@@ -163,6 +163,7 @@ function toggle_sound_thunder() {
 window.onload = function() {
     const toggle_dropdown = document.getElementById('toggle_dropdown');
     const drop_down_settings = document.getElementById('drop_down_settings');
+    const toggle_audio = document.getElementById('toggle_audio');
     const music_audio = document.getElementById('music_audio');
     const rain_audio = document.getElementById('rain_audio');
     const thunder_audio = document.getElementById('thunder_audio');
@@ -175,7 +176,17 @@ window.onload = function() {
         }
     });
 
-    music_audio.play();
-    rain_audio.play();
-    thunder_audio.play();
+    toggle_audio.addEventListener('click', function () {
+        if (toggle_audio.innerHTML === "<div class=\"toggle-audio-button\"><i class=\"fa-solid fa-play\" style=\"padding-left: 11px; padding-right: 11px;\" aria-hidden=\"true\"></i></div>") {
+            toggle_audio.innerHTML = "<div class=\"toggle-audio-button\"><i class=\"fa-solid fa-pause\" style=\"padding-left: 12px; padding-right: 13px;\" aria-hidden=\"true\"></i></div>";
+            music_audio.play();
+            rain_audio.play();
+            thunder_audio.play();
+        } else {
+            toggle_audio.innerHTML = "<div class=\"toggle-audio-button\"><i class=\"fa-solid fa-play\" style=\"padding-left: 11px; padding-right: 11px;\" aria-hidden=\"true\"></i></div>";
+            music_audio.pause();
+            rain_audio.pause();
+            thunder_audio.pause();
+        }
+    });
 }
