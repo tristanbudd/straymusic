@@ -25,7 +25,12 @@ Stray Music is a music streaming service inspired by the game "Stray". It offers
 
 ## Installation
 
-No installation is required to use Stray Music. Simply access the website through your web browser and start enjoying the music.
+You can access this at any time at [https://tristanbudd.github.io/straymusic/](https://tristanbudd.github.io/straymusic/)
+or download it and run it on practically any machine with a web browser.
+
+## Planned Changes / Fixes
+
+- Make the rain loop sound less obvious, you can currently make out when it fades in and out.
 
 ## Credits
 
