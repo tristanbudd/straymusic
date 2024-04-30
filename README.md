@@ -15,7 +15,6 @@ Stray Music is a music streaming service inspired by the game "Stray". It offers
 1. **Listening to Music:** Simply play/pause the music by clicking on the audio player button.
 2. **Customization:** Explore the dropdown settings menu to adjust various options, such as background, volume, and sound effects.
 3. **Switching Music:** Click on the "Switch Music" option to change tracks within the soundtrack.
-4. **External Links:** Visit the GitHub profile of the creator, Tristan Budd, for more information.
 
 ## Screenshots
 
