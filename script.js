@@ -158,7 +158,6 @@ window.onload = function() {
             toggle_audio.innerHTML = "<div class=\"toggle-audio-button\"><i class=\"fa-solid fa-pause\" style=\"padding-left: 12px; padding-right: 13px;\" aria-hidden=\"true\"></i></div>";
             music_audio.play();
             rain_audio.play();
-            rain_audio.volume = 0.5;
         } else {
             toggle_audio.innerHTML = "<div class=\"toggle-audio-button\"><i class=\"fa-solid fa-play\" style=\"padding-left: 11px; padding-right: 11px;\" aria-hidden=\"true\"></i></div>";
             music_audio.pause();
