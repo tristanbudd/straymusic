@@ -11,13 +11,13 @@ const background_list = [
     "https://i.imgur.com/kIrHb5j.jpg",
     "https://i.imgur.com/kYmgYBx.jpg",
     "https://i.imgur.com/O1vqlCe.jpg",
-]
+];
 
 document.body.style.backgroundImage = `url(${background_list[Math.floor(Math.random() * background_list.length)]})`;
 
 function switch_background() {
     let new_background = background_list[Math.floor(Math.random() * background_list.length)];
-    while(new_background === document.body.style.backgroundImage) {
+    while (new_background === document.body.style.backgroundImage) {
         new_background = background_list[Math.floor(Math.random() * background_list.length)];
     }
     document.body.style.backgroundImage = `url(${new_background})`;
@@ -27,7 +27,7 @@ function toggle_background_blur() {
     const background_blur = document.getElementById('background_blur');
     const background_overlay = document.getElementById('background_overlay');
 
-    if(background_blur.innerText.toLowerCase() === "toggle background blur (off)") {
+    if (background_blur.innerText.toLowerCase() === "toggle background blur (off)") {
         background_blur.innerText = "Toggle Background Blur (On)";
         background_overlay.style.backdropFilter = "none";
     } else {
@@ -40,7 +40,7 @@ function toggle_logo_overlay() {
     const toggle_logo = document.getElementById('toggle_logo');
     const logo_overlay = document.getElementById('logo_overlay');
 
-    if(toggle_logo.innerText.toLowerCase() === "toggle logo (off)") {
+    if (toggle_logo.innerText.toLowerCase() === "toggle logo (off)") {
         toggle_logo.innerText = "Toggle Logo (On)";
         logo_overlay.style.display = "none";
     } else {
@@ -66,31 +66,32 @@ var rain_effect_background = function() {
 rain_effect_background();
 
 const volume_slider = document.getElementById('volume_slider');
+const music_audio = document.getElementById('music_audio');
+const rain_audio = document.getElementById('rain_audio');
+
 music_audio.volume = volume_slider.value;
-rain_audio.volume = volume_slider.value;
+rain_audio.volume = volume_slider.value / 2;
+
 var is_playing_music = true;
 var is_playing_rain = true;
 var currentTrackIndex = 0;
 
 music_audio.addEventListener('ended', function() {
     currentTrackIndex = (currentTrackIndex + 1) % music_audio.children.length;
-
     music_audio.src = music_audio.children[currentTrackIndex].src;
     music_audio.play();
 });
 
 function switch_music() {
     currentTrackIndex = (currentTrackIndex + 1) % music_audio.children.length;
-
     music_audio.src = music_audio.children[currentTrackIndex].src;
     music_audio.play();
 }
 
 function toggle_sound_music() {
     const toggle_music = document.getElementById('toggle_music');
-    const music_audio = document.getElementById('music_audio');
 
-    if(toggle_music.innerText.toLowerCase() === "toggle music (off)") {
+    if (toggle_music.innerText.toLowerCase() === "toggle music (off)") {
         toggle_music.innerText = "Toggle Music (On)";
     } else {
         toggle_music.innerText = "Toggle Music (Off)";
@@ -111,10 +112,9 @@ volume_slider.addEventListener('input', function() {
 });
 
 function toggle_sound_rain() {
-    const rain_audio = document.getElementById('rain_audio');
     const toggle_rain = document.getElementById('toggle_rain');
 
-    if(toggle_rain.innerText.toLowerCase() === "toggle rain (off)") {
+    if (toggle_rain.innerText.toLowerCase() === "toggle rain (off)") {
         toggle_rain.innerText = "Toggle Rain (On)";
     } else {
         toggle_rain.innerText = "Toggle Rain (Off)";
@@ -129,8 +129,8 @@ function toggle_sound_rain() {
     }
 
     let drop = document.getElementsByClassName('drop');
-    for(let i = 0; i < drop.length; i++) {
-        if(drop[i].style.display === "none") {
+    for (let i = 0; i < drop.length; i++) {
+        if (drop[i].style.display === "none") {
             drop[i].style.display = "block";
         } else {
             drop[i].style.display = "none";
@@ -142,8 +142,6 @@ window.onload = function() {
     const toggle_dropdown = document.getElementById('toggle_dropdown');
     const drop_down_settings = document.getElementById('drop_down_settings');
     const toggle_audio = document.getElementById('toggle_audio');
-    const music_audio = document.getElementById('music_audio');
-    const rain_audio = document.getElementById('rain_audio');
 
     toggle_dropdown.addEventListener('click', function () {
         if (drop_down_settings.style.display === "none") {
