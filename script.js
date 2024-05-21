@@ -68,10 +68,8 @@ rain_effect_background();
 const volume_slider = document.getElementById('volume_slider');
 music_audio.volume = volume_slider.value;
 rain_audio.volume = volume_slider.value;
-thunder_audio.volume = volume_slider.value;
 var is_playing_music = true;
 var is_playing_rain = true;
-var is_playing_thunder = true;
 var currentTrackIndex = 0;
 
 music_audio.addEventListener('ended', function() {
@@ -109,8 +107,7 @@ function toggle_sound_music() {
 
 volume_slider.addEventListener('input', function() {
     music_audio.volume = volume_slider.value;
-    rain_audio.volume = volume_slider.value;
-    thunder_audio.volume = volume_slider.value;
+    rain_audio.volume = volume_slider.value / 2;
 });
 
 function toggle_sound_rain() {
@@ -141,32 +138,12 @@ function toggle_sound_rain() {
     }
 }
 
-function toggle_sound_thunder() {
-    const toggle_thunder = document.getElementById('toggle_thunder');
-    const thunder_audio = document.getElementById('thunder_audio');
-
-    if(toggle_thunder.innerText.toLowerCase() === "toggle thunder (off)") {
-        toggle_thunder.innerText = "Toggle Thunder (On)";
-    } else {
-        toggle_thunder.innerText = "Toggle Thunder (Off)";
-    }
-
-    if (is_playing_thunder) {
-        thunder_audio.pause();
-        is_playing_thunder = false;
-    } else {
-        thunder_audio.play();
-        is_playing_thunder = true;
-    }
-}
-
 window.onload = function() {
     const toggle_dropdown = document.getElementById('toggle_dropdown');
     const drop_down_settings = document.getElementById('drop_down_settings');
     const toggle_audio = document.getElementById('toggle_audio');
     const music_audio = document.getElementById('music_audio');
     const rain_audio = document.getElementById('rain_audio');
-    const thunder_audio = document.getElementById('thunder_audio');
 
     toggle_dropdown.addEventListener('click', function () {
         if (drop_down_settings.style.display === "none") {
@@ -181,12 +158,11 @@ window.onload = function() {
             toggle_audio.innerHTML = "<div class=\"toggle-audio-button\"><i class=\"fa-solid fa-pause\" style=\"padding-left: 12px; padding-right: 13px;\" aria-hidden=\"true\"></i></div>";
             music_audio.play();
             rain_audio.play();
-            thunder_audio.play();
+            rain_audio.volume = 0.5;
         } else {
             toggle_audio.innerHTML = "<div class=\"toggle-audio-button\"><i class=\"fa-solid fa-play\" style=\"padding-left: 11px; padding-right: 11px;\" aria-hidden=\"true\"></i></div>";
             music_audio.pause();
             rain_audio.pause();
-            thunder_audio.pause();
         }
     });
 }
