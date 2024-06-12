@@ -24,7 +24,7 @@ Stray Music is a music streaming service inspired by the game "Stray". It offers
 
 ## Installation
 
-You can access this at any time at [https://tristanbudd.github.io/straymusic/](https://tristanbudd.github.io/straymusic/)
+You can access this at any time at [https;//straymusic.tristanbudd.com](https://straymusic.tristanbudd.com)
 or download it and run it on practically any machine with a web browser.
 
 ## Planned Changes / Fixes
